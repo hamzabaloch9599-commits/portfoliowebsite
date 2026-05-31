@@ -1,0 +1,745 @@
+This is a complete, standalone HTML document for a "Projects" portfolio page. It showcases your flagship RASSTA platform, professional logistics projects, Pakistan-focused initiatives, and key achievements with a clean, modern layout and consistent dark navy and gold color scheme.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Projects | Logistics & Mathematics Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e1f2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR (consistent with all pages) ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 12, 18, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(240, 185, 11, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #f0b90b;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #f0f2f5;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #f0b90b;
+        }
+
+        .btn-link {
+            background: rgba(240, 185, 11, 0.15);
+            padding: 6px 18px;
+            border-radius: 40px;
+            color: #f0b90b !important;
+            font-weight: 600;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #f0b90b;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .projects-hero {
+            padding: 160px 20px 100px;
+            background: linear-gradient(125deg, #0f111a 0%, #1a1e2f 100%);
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid rgba(240, 185, 11, 0.25);
+        }
+
+        .projects-hero h1 {
+            font-size: 3.6rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #f0b90b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #d4d9f0;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* ===== section titles ===== */
+        .category-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        .category-title h2 {
+            font-size: 2.4rem;
+            font-family: 'Playfair Display', serif;
+            color: #11131f;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .category-title h2 i {
+            color: #f0b90b;
+        }
+        .category-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #f0b90b;
+            margin: 16px auto 0;
+            border-radius: 4px;
+        }
+
+        /* project card grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s ease;
+            border: 1px solid #edf2f7;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: #eef2ff;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f0b90b;
+            color: #11131f;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .project-content {
+            padding: 28px;
+        }
+
+        .project-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: #11131f;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .project-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0 0;
+            padding-top: 18px;
+            border-top: 1px solid #eef2f8;
+        }
+
+        .stat {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #475569;
+        }
+        .stat i {
+            color: #f0b90b;
+            margin-right: 6px;
+        }
+
+        .project-actions {
+            margin-top: 24px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn, .btn-small {
+            display: inline-block;
+            background: #f0b90b;
+            color: #0f172a;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #f0b90b;
+            color: #f0b90b;
+        }
+
+        .btn-outline:hover {
+            background: #f0b90b;
+            color: #0f172a;
+        }
+
+        .btn:hover {
+            background: #ffcd3c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(240,185,11,0.3);
+        }
+
+        /* flagship card center */
+        .flagship-project .project-card {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* timeline */
+        .project-timeline {
+            padding: 60px 20px;
+            background: #f8fafd;
+        }
+
+        .timeline-project {
+            position: relative;
+            padding-left: 40px;
+            margin: 40px 0;
+        }
+
+        .timeline-project::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #f0b90b;
+            border-radius: 3px;
+        }
+
+        .timeline-project::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            background: #f0b90b;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(240,185,11,0.2);
+        }
+
+        .timeline-project h3 {
+            font-size: 1.5rem;
+            color: #11131f;
+            margin-bottom: 12px;
+        }
+
+        /* achievement banner */
+        .achievement-banner {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 70px 20px;
+            border-radius: 48px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .achievement-banner h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .achievement-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 48px;
+            margin-top: 48px;
+        }
+
+        .achievement-stat h3 {
+            font-size: 2.5rem;
+            color: #f0b90b;
+            margin-bottom: 8px;
+        }
+
+        /* footer */
+        .footer {
+            background: #0e121f;
+            color: #cdd4f0;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 18px;
+        }
+
+        .footer-logo span {
+            color: #f0b90b;
+        }
+
+        .footer-about p {
+            color: #b9c2e0;
+            line-height: 1.6;
+            margin: 16px 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            background: #232838;
+            color: #f0b90b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #f0b90b;
+            color: #0e121f;
+        }
+
+        .footer-section h4, .footer-contact h4 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #bcc7e6;
+            transition: 0.2s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #f0b90b;
+        }
+
+        .footer-contact p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: #cbd5e6;
+        }
+
+        .footer-contact p i {
+            color: #f0b90b;
+            width: 24px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #232838;
+            color: #95a0c2;
+        }
+
+        /* responsive */
+        @media (max-width: 880px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                background: #0f111a;
+                width: 80%;
+                height: calc(100vh - 75px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 2rem;
+                gap: 2rem;
+                transition: 0.3s;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .projects-hero h1 {
+                font-size: 2.5rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .achievement-stats {
+                gap: 32px;
+            }
+        }
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px;
+            }
+            .category-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation consistent with all pages -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-user-tie"></i>
+                <span>Hamza HaqNawaz</span>
+            </a>
+            <button class="menu-toggle" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <h1>My Logistics Projects</h1>
+            <p class="hero-subtitle">From US market optimization to Pakistan's digital transformation — showcasing practical logistics solutions</p>
+        </div>
+    </section>
+
+    <!-- Flagship Project: RASSTA -->
+    <section class="flagship-project">
+        <div class="container">
+            <div class="category-title">
+                <h2><i class="fas fa-crown"></i> Flagship Project</h2>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="RASSTA Platform">
+                    <div class="project-badge">Active Development</div>
+                </div>
+                <div class="project-content">
+                    <h3>RASSTA — Pakistan Logistics Digitalization Platform</h3>
+                    <p>A comprehensive digital platform designed to transform Pakistan's trucking industry through technology integration, real-time tracking, efficient freight matching, and optimization algorithms.</p>
+                    <div class="project-tags">
+                        <span class="tag">Digital Transformation</span>
+                        <span class="tag">Freight Matching</span>
+                        <span class="tag">Real-time Tracking</span>
+                        <span class="tag">Fleet Management</span>
+                    </div>
+                    <div class="project-stats">
+                        <div class="stat"><i class="fas fa-calendar-alt"></i> 2023 – Present</div>
+                        <div class="stat"><i class="fas fa-chart-line"></i> Expected 40% Efficiency</div>
+                        <div class="stat"><i class="fas fa-users"></i> 100+ Carrier Network</div>
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="btn-small">View Details</a>
+                        <a href="contact.html" class="btn-small btn-outline">Partner Inquiry</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Projects (US Experience) -->
+    <section class="professional-projects" style="background: #f8fafd; padding: 20px 20px 60px;">
+        <div class="container">
+            <div class="category-title">
+                <h2><i class="fas fa-briefcase"></i> Professional Experience Projects</h2>
+            </div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image"><img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Route Optimization"></div>
+                    <div class="project-content">
+                        <h3>Cross-Country Route Optimization</h3>
+                        <p>Developed and implemented advanced route optimization algorithms for US carriers, reducing empty miles by 28% and improving on-time delivery to 98%.</p>
+                        <div class="project-tags"><span class="tag">Route Optimization</span><span class="tag">Data Analytics</span><span class="tag">Cost Reduction</span></div>
+                        <div class="project-actions"><a href="#" class="btn-small">Case Study</a></div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Carrier Network"></div>
+                    <div class="project-content">
+                        <h3>Carrier Network Development</h3>
+                        <p>Built and managed a network of 150+ verified carriers across the US, improving load coverage and reducing transportation costs by 22%.</p>
+                        <div class="project-tags"><span class="tag">Network Building</span><span class="tag">Vendor Management</span><span class="tag">Cost Optimization</span></div>
+                        <div class="project-actions"><a href="#" class="btn-small">Network Strategy</a></div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Tracking System"></div>
+                    <div class="project-content">
+                        <h3>Real-time Tracking Implementation</h3>
+                        <p>Led GPS tracking integration across 200+ trucks, providing 99% shipment visibility and reducing customer inquiry volume by 85%.</p>
+                        <div class="project-tags"><span class="tag">Tech Integration</span><span class="tag">GPS Tracking</span><span class="tag">Customer Service</span></div>
+                        <div class="project-actions"><a href="#" class="btn-small">Implementation Guide</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pakistan-Focused Initiatives -->
+    <section class="pakistan-projects" style="padding: 40px 20px 60px;">
+        <div class="container">
+            <div class="category-title">
+                <h2><i class="fas fa-flag"></i> Pakistan-Focused Initiatives</h2>
+            </div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Digital Freight Platform"></div>
+                    <div class="project-content">
+                        <h3>Digital Freight Matching Prototype</h3>
+                        <p>Developed Pakistan's first digital freight matching prototype connecting shippers with truckers in real-time, with load optimization logic.</p>
+                        <div class="project-tags"><span class="tag">Prototype</span><span class="tag">Market Research</span><span class="tag">User Testing</span></div>
+                        <div class="project-stats"><div class="stat"><i class="fas fa-check-circle"></i> Prototype Completed</div><div class="stat"><i class="fas fa-users"></i> 50+ Beta Testers</div></div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Training Program"></div>
+                    <div class="project-content">
+                        <h3>Logistics Digital Literacy Program</h3>
+                        <p>Created training programs for Pakistani trucking companies on digital tools, TMS basics, and data-driven decision making.</p>
+                        <div class="project-tags"><span class="tag">Training</span><span class="tag">Capacity Building</span><span class="tag">Education</span></div>
+                        <div class="project-stats"><div class="stat"><i class="fas fa-graduation-cap"></i> 200+ Trained</div><div class="stat"><i class="fas fa-star"></i> 4.8/5 Rating</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Timeline & Evolution -->
+    <section class="project-timeline">
+        <div class="container">
+            <div class="category-title">
+                <h2><i class="fas fa-history"></i> Project Timeline & Evolution</h2>
+            </div>
+            <div class="timeline-project">
+                <h3>2018 – 2020: Foundation at Zari LLC</h3>
+                <p>Mastered US logistics operations, carrier management, and route optimization techniques. Developed foundational expertise in freight coordination and KPI tracking.</p>
+            </div>
+            <div class="timeline-project">
+                <h3>2020 – 2023: Advanced Implementation at Authorize Logistic</h3>
+                <p>Implemented advanced tracking systems, developed optimization algorithms, built extensive carrier networks. Achieved 35% operational efficiency improvement.</p>
+            </div>
+            <div class="timeline-project">
+                <h3>2023 – Present: RASSTA & Pakistan Digitalization</h3>
+                <p>Founded RASSTA to bring digital transformation to Pakistan's logistics. Developing comprehensive platform combining US experience with local market needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Banner -->
+    <section class="achievement-banner">
+        <div class="container">
+            <h2>Project Impact & Achievements</h2>
+            <p>Measurable results from implemented logistics solutions</p>
+            <div class="achievement-stats">
+                <div class="achievement-stat"><h3>35%</h3><p>Operational Efficiency Gain</p></div>
+                <div class="achievement-stat"><h3>28%</h3><p>Reduction in Empty Miles</p></div>
+                <div class="achievement-stat"><h3>98%</h3><p>On-time Delivery Rate</p></div>
+                <div class="achievement-stat"><h3>85%</h3><p>Reduction in Inquiries</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (consistent) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo"><i class="fas fa-user-tie"></i><span>Hamza HaqNawaz</span></div>
+                <p>Professional Portfolio showcasing logistics expertise, US market operations, mathematical optimization, and Pakistan's digital transformation journey.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-medium"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-envelope"></i> Rassta.1m@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +92 3029599268</p>
+                <p><i class="fas fa-map-marker-alt"></i> Qasim Pur Canal Road, Near Al Safa Marquee<br>Al Khalil Town, Bahawalpur Road<br>Multan, Punjab 66000<br>Pakistan</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; @2025 Hamza HaqNawaz - Logistics Professional Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navLinks.classList.remove('active'));
+            });
+        }
+    </script>
+</body>
+</html>
+```

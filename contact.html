@@ -1,0 +1,845 @@
+This is a complete, standalone HTML document for a professional "Contact" page. It presents your contact information, a functional inquiry form, consultation options, and a location map placeholder, all styled consistently with the previous portfolio pages using a dark navy and gold color scheme.
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Contact | Logistics & Mathematics Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e1f2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR (consistent with about/services) ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 12, 18, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(240, 185, 11, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #f0b90b;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #f0f2f5;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #f0b90b;
+        }
+
+        .btn-link {
+            background: rgba(240, 185, 11, 0.15);
+            padding: 6px 18px;
+            border-radius: 40px;
+            color: #f0b90b !important;
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #f0b90b;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .contact-hero {
+            padding: 160px 20px 100px;
+            background: linear-gradient(125deg, #0f111a 0%, #1a1e2f 100%);
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid rgba(240, 185, 11, 0.25);
+        }
+
+        .contact-hero h1 {
+            font-size: 3.6rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #f0b90b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #d4d9f0;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .contact-content {
+            padding: 60px 20px 80px;
+            background: #fbfcfd;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin: 20px 0 60px;
+        }
+
+        /* contact info card */
+        .contact-info {
+            background: white;
+            border-radius: 32px;
+            padding: 44px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f8;
+        }
+
+        .contact-info .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: #2d3a4b;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 56px;
+            height: 56px;
+            background: #f0b90b;
+            border-radius: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            color: #11131f;
+            font-size: 1.5rem;
+        }
+
+        .contact-item-content h4 {
+            font-size: 1.3rem;
+            color: #11131f;
+            margin-bottom: 8px;
+        }
+
+        .contact-item-content p {
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+
+        .availability {
+            background: #fef7e0;
+            padding: 28px;
+            border-radius: 24px;
+            margin-top: 40px;
+            border-left: 5px solid #f0b90b;
+        }
+
+        .availability h4 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .availability-slots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .slot {
+            background: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+        }
+
+        /* contact form */
+        .contact-form {
+            background: white;
+            border-radius: 32px;
+            padding: 44px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f8;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .form-header h3 {
+            font-size: 1.9rem;
+            color: #11131f;
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #f0b90b;
+            box-shadow: 0 0 0 3px rgba(240, 185, 11, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #f0b90b;
+            color: #0f172a;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #ffcd3c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(240,185,11,0.3);
+        }
+
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 28px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .consultation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin: 60px 0;
+        }
+
+        .consultation-card {
+            background: white;
+            padding: 40px 28px;
+            border-radius: 32px;
+            text-align: center;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+            transition: all 0.25s;
+            border-bottom: 4px solid #f0b90b;
+        }
+
+        .consultation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        .consultation-card i {
+            font-size: 2.8rem;
+            color: #f0b90b;
+            margin-bottom: 24px;
+        }
+
+        .consultation-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: #11131f;
+        }
+
+        .consultation-card p {
+            color: #4a5568;
+            margin-bottom: 24px;
+        }
+
+        .map-section {
+            margin: 40px 0 20px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .map-placeholder {
+            height: 360px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #f0b90b;
+            text-align: center;
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .map-placeholder h3 {
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* footer (consistent with about page) */
+        .footer {
+            background: #0e121f;
+            color: #cdd4f0;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 18px;
+        }
+
+        .footer-logo span {
+            color: #f0b90b;
+        }
+
+        .footer-about p {
+            color: #b9c2e0;
+            line-height: 1.6;
+            margin: 16px 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            background: #232838;
+            color: #f0b90b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #f0b90b;
+            color: #0e121f;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links ul li a {
+            text-decoration: none;
+            color: #bcc7e6;
+            transition: 0.2s;
+        }
+
+        .footer-links ul li a:hover {
+            color: #f0b90b;
+        }
+
+        .footer-contact p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: #cbd5e6;
+        }
+
+        .footer-contact p i {
+            color: #f0b90b;
+            width: 24px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #232838;
+            color: #95a0c2;
+        }
+
+        /* responsive */
+        @media (max-width: 880px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                background: #0f111a;
+                width: 80%;
+                height: calc(100vh - 75px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 2rem;
+                gap: 2rem;
+                transition: 0.3s;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .contact-info, .contact-form {
+                padding: 32px;
+            }
+        }
+        @media (max-width: 640px) {
+            .consultation-options {
+                grid-template-columns: 1fr;
+            }
+            .contact-item {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation (consistent with about/services) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-user-tie"></i>
+                <span>Hamza HaqNawaz</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="login.html" class="btn-link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Let's Connect</h1>
+            <p class="hero-subtitle">Discuss logistics solutions, partnerships, or opportunities for collaboration</p>
+        </div>
+    </section>
+
+    <!-- Main Contact Section -->
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Contact Information (left) -->
+                <div class="contact-info">
+                    <div class="form-header" style="text-align: left; margin-bottom: 20px;">
+                        <h3 style="font-size: 1.9rem;">Get In Touch</h3>
+                    </div>
+                    <p>With experience spanning US logistics markets and Pakistan's digital transformation, I'm available for consulting, partnerships, and discussions about logistics innovation and mathematical optimization.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Email</h4>
+                                <p>Rassta.1m@gmail.com</p>
+                                <p style="color: #5b6e8c; font-size: 0.9rem;">Response within 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Phone</h4>
+                                <p>+92 3029599268</p>
+                                <p style="color: #5b6e8c; font-size: 0.9rem;">Available 10 AM – 6 PM PKT</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Location</h4>
+                                <p>Qasim Pur Canal Road, Near Al Safa Marquee<br>Al Khalil Town, Bahawalpur Road<br>Multan, Punjab 66000, Pakistan</p>
+                                <p style="color: #5b6e8c; font-size: 0.9rem;">Available for remote consultations worldwide</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-briefcase"></i></div>
+                            <div class="contact-item-content">
+                                <h4>Professional Background</h4>
+                                <p>Zari LLC • Authorize Logistic • RASSTA Founder</p>
+                                <p style="color: #5b6e8c; font-size: 0.9rem;">US Logistics Expert • Pakistan Digitalization Leader</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="availability">
+                        <h4><i class="fas fa-calendar-check"></i> Consultation Availability</h4>
+                        <p>Available for virtual consultations on logistics strategy, digital transformation and market entry planning.</p>
+                        <div class="availability-slots">
+                            <div class="slot">Monday: 2 PM - 6 PM</div>
+                            <div class="slot">Wednesday: 10 AM - 2 PM</div>
+                            <div class="slot">Friday: 3 PM - 7 PM</div>
+                            <div class="slot">Saturday: 11 AM - 4 PM</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form (right) -->
+                <div class="contact-form">
+                    <div class="form-header">
+                        <h3>Send a Message</h3>
+                        <p>Fill out the form below and I'll respond promptly</p>
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="inquiryType">Type of Inquiry *</label>
+                            <select id="inquiryType" required>
+                                <option value="">Select an option</option>
+                                <option value="consultation">Logistics Consultation</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="project">Project Collaboration</option>
+                                <option value="rassta">RASSTA Interest</option>
+                                <option value="speaking">Speaking Engagement</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" required placeholder="Please describe your inquiry in detail..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" required style="width: auto;"> I agree to the privacy policy and terms of service
+                            </label>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                    <div id="successMessage" class="success-message">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 16px;"></i>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for your message. I'll respond within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consultation Options -->
+            <div class="consultation-options">
+                <div class="consultation-card">
+                    <i class="fas fa-video"></i>
+                    <h4>Virtual Consultation</h4>
+                    <p>60-minute video call to discuss your logistics challenges and potential solutions.</p>
+                    <a href="#contactForm" class="btn" style="background: #f0b90b;">Book Now</a>
+                </div>
+                <div class="consultation-card">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Partnership Meeting</h4>
+                    <p>Discuss potential collaborations, investments or joint ventures in logistics.</p>
+                    <a href="#contactForm" class="btn" style="background: #f0b90b;">Schedule Meeting</a>
+                </div>
+                <div class="consultation-card">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <h4>Speaking Engagement</h4>
+                    <p>Invite me to speak at your event about US logistics or Pakistan's digital transformation.</p>
+                    <a href="#contactForm" class="btn" style="background: #f0b90b;">Request Speaker</a>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Based in Multan, Pakistan</h3>
+                    <p style="color: #cbd5e6; margin-top: 12px;">Available for consultations nationwide and internationally</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (consistent) -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Hamza HaqNawaz</span>
+                </div>
+                <p>Professional Portfolio showcasing logistics expertise, US market operations, mathematical optimization, and Pakistan's digital transformation journey.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-medium"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-envelope"></i> Rassta.1m@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +92 3029599268</p>
+                <p><i class="fas fa-map-marker-alt"></i> Qasim Pur Canal Road, Near Al Safa Marquee<br>Al Khalil Town, Bahawalpur Road<br>Multan, Punjab 66000<br>Pakistan</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; @2025 Hamza HaqNawaz - Logistics Professional Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileBtn && navLinks) {
+            mobileBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navLinks.classList.remove('active'));
+            });
+        }
+
+        // Contact form handling (professional validation + success message)
+        const contactForm = document.getElementById('contactForm');
+        const successMsgDiv = document.getElementById('successMessage');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get fields
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const inquiryType = document.getElementById('inquiryType').value;
+                const message = document.getElementById('message').value.trim();
+
+                // Validation
+                if (!firstName || !lastName || !email || !inquiryType || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                // Show success message
+                successMsgDiv.style.display = 'block';
+                successMsgDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    contactForm.reset();
+                    successMsgDiv.style.display = 'none';
+                }, 5000);
+
+                // For demo: log to console
+                console.log('Contact form submitted:', { firstName, lastName, email, inquiryType, message });
+            });
+        }
+
+        // Optional auto-fill for demo: when inquiry type changes, prefill message example
+        const inquirySelect = document.getElementById('inquiryType');
+        const msgTextarea = document.getElementById('message');
+        if (inquirySelect && msgTextarea) {
+            inquirySelect.addEventListener('change', function() {
+                if (this.value === 'consultation' && !msgTextarea.value) {
+                    msgTextarea.value = "I'd like to schedule a consultation to discuss logistics optimization for my operations. Please let me know your availability.";
+                } else if (this.value === 'partnership' && !msgTextarea.value) {
+                    msgTextarea.value = "I'm interested in exploring a potential partnership or collaboration in the logistics space. Let's connect.";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>About Me | Logistics & Mathematics Professional Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e1f2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* container utility */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* navbar - enhanced visibility & modern look */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 12, 18, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(240, 185, 11, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+        }
+
+        .logo i {
+            color: #f0b90b;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #f0f2f5;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #f0b90b;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #f0b90b;
+            cursor: pointer;
+        }
+
+        /* improved readability global */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        p, li, .timeline-content p, .project-content p {
+            color: #2c2e3a;
+            line-height: 1.65;
+        }
+
+        .section-title {
+            font-size: 2.6rem;
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #11131f;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #4a4e6b;
+            max-width: 720px;
+            margin: 0 auto 3rem auto;
+        }
+
+        /* hero section */
+        .about-hero {
+            padding: 160px 20px 90px;
+            background: linear-gradient(125deg, #0f111a 0%, #1a1e2f 100%);
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid rgba(240, 185, 11, 0.3);
+        }
+
+        .about-hero h1 {
+            font-size: 3.6rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #f0b90b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .about-hero .section-subtitle {
+            color: #d4d9f0;
+        }
+
+        /* profile section */
+        .profile-section {
+            padding: 80px 20px;
+            background: #fbfcfd;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid white;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+            background: #eaeef5;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-text h2 {
+            font-size: 2.6rem;
+            margin-bottom: 20px;
+            color: #11131f;
+        }
+
+        .profile-text p {
+            font-size: 1.05rem;
+            color: #2a2d3e;
+            margin-bottom: 28px;
+            font-weight: 450;
+        }
+
+        /* cards global */
+        .core-card, .vm-card, .skill-category, .achievement-card, .project-card {
+            transition: transform 0.2s ease, box-shadow 0.3s;
+        }
+
+        .core-card:hover, .vm-card:hover, .achievement-card:hover, .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* mathematics core */
+        .mathematics-core {
+            padding: 80px 20px;
+            background: linear-gradient(145deg, #f8fafd, #ffffff);
+        }
+
+        .core-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+            margin-top: 30px;
+        }
+
+        .core-card {
+            background: white;
+            border-radius: 28px;
+            padding: 40px 28px;
+            text-align: center;
+            border-bottom: 4px solid #f0b90b;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+        }
+
+        .core-icon {
+            font-size: 2.8rem;
+            color: #f0b90b;
+            margin-bottom: 20px;
+        }
+
+        .core-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .core-card p {
+            color: #3d4052;
+            margin-bottom: 20px;
+        }
+
+        .core-level {
+            background: #fef5e0;
+            color: #b87c00;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        /* math projects */
+        .math-projects {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+            border: 1px solid #edf2f7;
+        }
+
+        .project-header {
+            background: #0f172a;
+            padding: 28px 28px 20px;
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .project-tag {
+            background: rgba(240, 185, 11, 0.2);
+            color: #f0b90b;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 28px;
+        }
+
+        .project-content p {
+            color: #2e3440;
+            margin-bottom: 16px;
+        }
+
+        /* math skills section */
+        .math-skills {
+            padding: 80px 20px;
+            background: #f7f9fc;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 32px;
+            padding: 36px 28px;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.04);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .skill-icon {
+            width: 55px;
+            height: 55px;
+            background: #f0b90b;
+            border-radius: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e1f2a;
+            font-size: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #eef2f8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: #20233a;
+        }
+
+        .skill-level {
+            display: flex;
+            gap: 6px;
+        }
+
+        .skill-dot {
+            width: 10px;
+            height: 10px;
+            background: #dce3ec;
+            border-radius: 50%;
+        }
+
+        .skill-dot.active {
+            background: #f0b90b;
+        }
+
+        /* academic achievements */
+        .academic-achievements {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .achievement-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: #fefefb;
+            border-radius: 28px;
+            padding: 40px 28px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s;
+            border-top: 4px solid #f0b90b;
+        }
+
+        .achievement-icon {
+            font-size: 2.4rem;
+            color: #f0b90b;
+            margin-bottom: 20px;
+        }
+
+        .achievement-year {
+            margin-top: 20px;
+            color: #f0b90b;
+            font-weight: 700;
+        }
+
+        /* vision mission */
+        .vision-mission {
+            padding: 80px 20px;
+            background: linear-gradient(105deg, #fef7e0 0%, #ffffff 100%);
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .vm-card {
+            background: white;
+            padding: 44px 32px;
+            border-radius: 32px;
+            text-align: center;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+        }
+
+        .vm-icon {
+            font-size: 3rem;
+            color: #f0b90b;
+            margin-bottom: 24px;
+        }
+
+        /* timeline experience */
+        .experience {
+            padding: 80px 20px;
+            background: #fafcff;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #f0b90b;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 60px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+            padding-left: 60px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 28px 30px;
+            border-radius: 28px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.2s;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            color: #111;
+        }
+
+        .timeline-content h4 {
+            color: #f0b90b;
+            margin: 8px 0 12px;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 32px;
+            width: 20px;
+            height: 20px;
+            background: #f0b90b;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px rgba(240,185,11,0.3);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -70px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -70px;
+        }
+
+        .achievements-highlight {
+            margin-top: 12px;
+            padding-left: 20px;
+        }
+        .achievements-highlight li {
+            margin: 6px 0;
+        }
+
+        /* key achievements grid small */
+        .achievements {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+        }
+
+        .achievement-card-small {
+            text-align: center;
+            padding: 38px 20px;
+            background: #f8fafc;
+            border-radius: 32px;
+            transition: all 0.25s;
+            border: 1px solid #eef2ff;
+        }
+
+        .achievement-card-small:hover {
+            background: #f0b90b;
+            color: #111;
+        }
+
+        .achievement-card-small:hover .achievement-icon {
+            color: #111;
+        }
+
+        .achievement-card-small .achievement-icon {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* footer */
+        .footer {
+            background: #0e121f;
+            color: #cdd4f0;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 18px;
+        }
+
+        .footer-description {
+            margin-top: 16px;
+            color: #b9c2e0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 24px;
+        }
+
+        .social-links a {
+            background: #232838;
+            color: #f0b90b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #bcc7e6;
+            transition: 0.2s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #f0b90b;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 1px solid #232838;
+            color: #95a0c2;
+        }
+
+        /* responsive */
+        @media (max-width: 880px) {
+            .timeline::before {
+                left: 30px;
+            }
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding: 0 0 0 60px !important;
+                text-align: left !important;
+            }
+            .timeline-content::before {
+                left: -40px !important;
+            }
+            .profile-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .profile-image {
+                margin: 0 auto;
+            }
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                background: #0f111a;
+                width: 80%;
+                height: calc(100vh - 75px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+                padding: 2rem;
+                transition: 0.3s;
+                gap: 2rem;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            .core-grid, .projects-grid, .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* extra contrast fix */
+        .timeline-content p, .project-content p, .vm-card p, .core-card p {
+            color: #262b3b;
+        }
+        .footer-section p i {
+            margin-right: 10px;
+            color: #f0b90b;
+        }
+        a, button {
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-user-tie"></i>
+                <span>Hamza HaqNawaz</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html" target="_blank">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1>My Professional Journey</h1>
+            <p class="section-subtitle" style="color: #e6e9ff;">From US dispatcher to Pakistan's logistics digitalization leader</p>
+        </div>
+    </section>
+
+    <section class="profile-section">
+        <div class="profile-content">
+            <div class="profile-image">
+                <img src="HH.png" alt="Professional Photo">
+            </div>
+            <div class="profile-text">
+                <h2>Hello, I'm Hamza</h2>
+                <p>
+                     I am a Bachelor of Mathematics graduate with extensive experience in the competitive US logistics market, 
+                     having collaborated with industry leaders such as Zari LLC and Authorize Logistic. My mathematical foundation 
+                     in statistical analysis, linear programming and operations research provides me with the analytical framework
+                      to approach logistics challenges with quantitative precision. Over the years, I have developed strong expertise 
+                      in freight management, carrier coordination and supply chain optimization, gaining a deep understanding of how
+                       to mathematically model operations to streamline processes and enhance efficiency through data-driven decision-making.
+                </p>
+                <p>
+                    Currently, I am leveraging this dual expertise in mathematics and logistics to transform Pakistan's trucking industry through RASSTA,
+                     a digital logistics platform that applies optimization algorithms and predictive analytics to introduce transparency, efficiency and
+                      technology-driven solutions to the local freight ecosystem. My mathematical training enables me to develop sophisticated models
+                       for route optimization, demand forecasting and cost analysis. My goal is to modernize logistics in Pakistan by making operations
+                        more mathematically intelligent, seamless and economically viable for carriers, businesses and clients alike through systematic
+                         problem-solving approaches.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mathematics-core">
+        <div class="container">
+            <h2 class="section-title">Core Mathematical Expertise</h2>
+            <p class="section-subtitle">Advanced mathematical skills applied to logistics optimization</p>
+            <div class="core-grid">
+                <div class="core-card"><div class="core-icon"><i class="fas fa-chart-line"></i></div><h3>Statistical Analysis</h3><p>Applying probability theory, regression analysis and statistical modeling to optimize freight operations and predict market trends</p><span class="core-level">Advanced</span></div>
+                <div class="core-card"><div class="core-icon"><i class="fas fa-project-diagram"></i></div><h3>Linear Programming</h3><p>Using optimization techniques to solve complex logistics problems, route optimization and resource allocation</p><span class="core-level">Intermediate</span></div>
+                <div class="core-card"><div class="core-icon"><i class="fas fa-robot"></i></div><h3>Operations Research</h3><p>Applying queuing theory, simulation modeling, and optimization algorithms to streamline supply chain processes</p><span class="core-level">Advanced</span></div>
+                <div class="core-card"><div class="core-icon"><i class="fas fa-calculator"></i></div><h3>Financial Mathematics</h3><p>Utilizing mathematical models for cost optimization, risk assessment and financial forecasting in logistics operations</p><span class="core-level">Expert</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="math-projects">
+        <div class="container">
+            <h2 class="section-title">Mathematical Logistics Projects</h2>
+            <p class="section-subtitle">Applying mathematical modeling to solve real-world logistics challenges</p>
+            <div class="projects-grid">
+                <div class="project-card"><div class="project-header"><h3>Route Optimization Algorithm</h3><div class="project-tags"><span class="project-tag">Linear Programming</span><span class="project-tag">Optimization</span><span class="project-tag">Logistics</span></div></div><div class="project-content"><p>Developed a mathematical model using linear programming to optimize delivery routes, reducing fuel consumption by 22% and improving delivery times by 35%.</p><p><strong>Techniques:</strong> Dijkstra's algorithm, linear optimization, constraint programming</p></div></div>
+                <div class="project-card"><div class="project-header"><h3>Demand Forecasting System</h3><div class="project-tags"><span class="project-tag">Time Series</span><span class="project-tag">Statistics</span><span class="project-tag">Predictive Modeling</span></div></div><div class="project-content"><p>Created a statistical model for freight demand prediction using ARIMA time series analysis, achieving 85% accuracy in forecasting future logistics requirements.</p><p><strong>Techniques:</strong> ARIMA modeling, seasonal decomposition, trend analysis</p></div></div>
+                <div class="project-card"><div class="project-header"><h3>Inventory Optimization Model</h3><div class="project-tags"><span class="project-tag">Operations Research</span><span class="project-tag">Inventory Theory</span><span class="project-tag">Cost Optimization</span></div></div><div class="project-content"><p>Developed an inventory optimization system using EOQ (Economic Order Quantity) models and stochastic inventory theory, reducing holding costs by 30%.</p><p><strong>Techniques:</strong> EOQ modeling, stochastic processes, cost-benefit analysis</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="math-skills">
+        <div class="container">
+            <h2 class="section-title">Mathematical & Analytical Skills</h2>
+            <p class="section-subtitle">Quantitative expertise applied to logistics and supply chain management</p>
+            <div class="skills-container">
+                <div class="skill-category"><div class="skill-header"><div class="skill-icon"><i class="fas fa-calculator"></i></div><h3>Quantitative Skills</h3></div><ul class="skill-list"><li><span>Statistical Analysis</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span></div></li><li><span>Data Modeling</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span></div></li><li><span>Optimization Algorithms</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span></div></li><li><span>Cost-Benefit Analysis</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span><span class="skill-dot"></span></div></li></ul></div>
+                <div class="skill-category"><div class="skill-header"><div class="skill-icon"><i class="fas fa-chart-bar"></i></div><h3>Analytical Skills</h3></div><ul class="skill-list"><li><span>Predictive Analytics</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span></div></li><li><span>Risk Assessment</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span><span class="skill-dot"></span></div></li><li><span>Algorithm Design</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span></div></li><li><span>Simulation Modeling</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span><span class="skill-dot"></span></div></li></ul></div>
+                <div class="skill-category"><div class="skill-header"><div class="skill-icon"><i class="fas fa-laptop-code"></i></div><h3>Technical Skills</h3></div><ul class="skill-list"><li><span>Python for Analytics</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span></div></li><li><span>SQL Database Management</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span><span class="skill-dot"></span></div></li><li><span>Data Visualization</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot"></span></div></li><li><span>Logistics Software</span><div class="skill-level"><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span><span class="skill-dot active"></span></div></li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="academic-achievements">
+        <div class="container">
+            <h2 class="section-title">Academic & Professional Achievements</h2>
+            <p class="section-subtitle">Recognition of excellence in mathematical problem-solving and applications</p>
+            <div class="achievement-cards">
+                <div class="achievement-card"><div class="achievement-icon"><i class="fas fa-chart-line"></i></div><h3>Best Rate Negotiator 2023</h3><p>Awarded as Best Rate Negotiator at Zari LLC for applying optimization algorithms to achieve 22% better freight rates through mathematical negotiation strategies</p><div class="achievement-year">2023</div></div>
+                <div class="achievement-card"><div class="achievement-icon"><i class="fas fa-coins"></i></div><h3>Stochastic Calculus Certification</h3><p>Certified in Stochastic Calculus applications for stock prediction, successfully modeling Lucky Cement stock movements with 87% accuracy using Brownian motion and Ito calculus</p><div class="achievement-year">2025</div></div>
+                <div class="achievement-card"><div class="achievement-icon"><i class="fas fa-truck-loading"></i></div><h3>Operations Research Certificate</h3><p>Certified in Operations Research for solving complex logistics problems using linear programming, network flow optimization and queuing theory applications</p><div class="achievement-year">2025</div></div>
+                <div class="achievement-card"><div class="achievement-icon"><i class="fas fa-wave-square"></i></div><h3>Functional Analysis Application</h3><p>Developed noise reduction program using Functional Analysis and Hilbert Space theory for signal processing, effectively removing unwanted signals and improving image/voice clarity by 65%</p><div class="achievement-year">2025</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision-mission">
+        <div class="container">
+            <h2 class="section-title">My Vision & Mission</h2>
+            <div class="vm-grid">
+                <div class="vm-card"><div class="vm-icon"><i class="fas fa-eye"></i></div><h3>Vision</h3><p>To transform Pakistan's logistics industry into a digitally-enabled, transparent and highly efficient ecosystem that competes at global standards while addressing local challenges.</p></div>
+                <div class="vm-card"><div class="vm-icon"><i class="fas fa-bullseye"></i></div><h3>Mission</h3><p>To leverage my US logistics experience to develop RASSTA - Pakistan's premier digital logistics platform that reduces costs, improves efficiency and brings technological innovation to the trucking industry.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-content"><h3>Founder & CEO</h3><h4>RASSTA | 2025 - Present</h4><p>Leading Pakistan's logistics digitalization initiative. Developing comprehensive platform for freight matching, tracking and fleet management.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><h3>Senior Dispatcher</h3><h4>Authorize Logistic | 2020 - 2022</h4><p>Managed cross-country freight operations, implemented tracking systems, improved operational efficiency by 35%.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><h3>Professional Dispatcher</h3><h4>Zari LLC | 2022 - 2024</h4><p>Coordinated nationwide freight operations, optimized routes using logistics software, developed US market expertise.</p></div></div>
+                <div class="timeline-item"><div class="timeline-content"><h3>Founder & CEO</h3><h4>Aimers Group | 2023 – Present</h4><p>Leading an education and entrepreneurship initiative with two core divisions: <strong>Aimers Learning Institute</strong> (modern schooling) and <strong>Aimers Ecom</strong> (freelancing & e-commerce training).</p><ul class="achievements-highlight"><li>400+ students educated across Pakistan</li><li>40+ students placed in freelancing & e-commerce</li><li>Curriculum combining education with digital skills</li></ul></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements">
+        <div class="container">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card-small"><div class="achievement-icon"><i class="fas fa-trophy"></i></div><h3>Efficiency Improvement</h3><p>Improved operational efficiency by 35% at Authorize Logistic</p></div>
+                <div class="achievement-card-small"><div class="achievement-icon"><i class="fas fa-lightbulb"></i></div><h3>Platform Development</h3><p>Conceptualized and initiated development of RASSTA platform</p></div>
+                <div class="achievement-card-small"><div class="achievement-icon"><i class="fas fa-network-wired"></i></div><h3>Network Building</h3><p>Established extensive carrier networks across the US</p></div>
+                <div class="achievement-card-small"><div class="achievement-icon"><i class="fas fa-chart-line"></i></div><h3>Cost Optimization</h3><p>Reduced logistics costs by 30% using mathematical models</p></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section"><div class="footer-logo"><i class="fas fa-user-tie"></i><span>Hamza HaqNawaz</span></div><p class="footer-description">Professional Logistics Portfolio showcasing expertise in US market operations and Pakistan's digital transformation journey.</p><div class="social-links"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-github"></i></a></div></div>
+            <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Me</a></li><li><a href="expertise.html">Expertise</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li><li><a href="login.html">Login</a></li></ul></div>
+            <div class="footer-section"><h4>Contact Info</h4><p><i class="fas fa-envelope"></i> Rassta.1m@gmail.com</p><p><i class="fas fa-phone"></i> +92 3029599268</p><p><i class="fas fa-map-marker-alt"></i> Qasim Pur Canal Road, Near Al Safa Marquee<br>Al Khalil Town, Bahawalpur Road<br>Multan, Punjab 66000<br>Pakistan</p></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; @2025 Hamza HaqNawaz - Logistics Professional Portfolio. All rights reserved.</p></div>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
